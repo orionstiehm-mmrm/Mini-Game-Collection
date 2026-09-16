@@ -106,7 +106,7 @@ if size_end[0] < 3 and size_end[1] < 3 and size_end[2] < 3:
     player_points[size_end[1]] += 1
 else:
     if size_end[0] >= 3 and size_end[1] >= 3 and size_end[2] >= 3:
-        print(f"But somehow you all picked the same number: {int_ans[1]}, so no one gets points")
+        print(f"You somehow all picked the same number: {int_ans[1]}, so no one gets points")
     else:
         mid_tie = 0
         if size_end[0] < 3: #Setting all the words from the players
@@ -122,7 +122,7 @@ else:
             tie_int = int_ans[(size_end[2]+2)%3]
             player_points[size_end[2]] += 1
             winner = 2
-        print(f"Unfortunately there was a tie between two players entering {tie_int}, so player {winner} gets a point")
+        print(f"There unfortunately was a tie between two players entering {tie_int}, so player {winner} gets a point")
 time.sleep(4)
 
 
@@ -160,7 +160,7 @@ if size_end[0] < 3 and size_end[1] < 3 and size_end[2] < 3: #To check how many t
     player_points[size_end[1]] += 1
 else:
     if size_end[0] >= 3 and size_end[1] >= 3 and size_end[2] >= 3:
-        print(f"But somehow you all picked the same value of \"{str_ans[0]}\", \"{str_ans[1]}\", and \"{str_ans[2]}\", so no one gets points")
+        print(f"You somehow all picked the same value of \"{str_ans[0]}\", \"{str_ans[1]}\", and \"{str_ans[2]}\", so no one gets points")
     else:
         mid_tie = 0
         if size_end[0] < 3: #Setting all the words from the players
@@ -182,7 +182,7 @@ else:
             play3_word = str_ans[size_end[2]]
             player_points[size_end[2]] += 1
             winner = 2
-        print(f"Unfortunately there was a tie between \"{play1_word}\" and \"{play2_word}\", so player {winner} gets a point with \"{play3_word}\"")
+        print(f"There unfortunately was a tie between \"{play1_word}\" and \"{play2_word}\", so player {winner} gets a point with \"{play3_word}\"")
 
 time.sleep(4)
 
@@ -228,7 +228,7 @@ if size_end[0] < 3 and size_end[1] < 3 and size_end[2] < 3: #To check how many t
     player_points[size_end[1]] += 1
 else:
     if size_end[0] >= 3 and size_end[1] >= 3 and size_end[2] >= 3:
-        print(f"But somehow you all picked the same scoring words of \"{str_ans[0]}\", \"{str_ans[1]}\", and \"{str_ans[2]}\" with the score {int_ans[1]}, so no one gets points")
+        print(f"You somehow all picked the same scoring words of \"{str_ans[0]}\", \"{str_ans[1]}\", and \"{str_ans[2]}\" with the score {int_ans[1]}, so no one gets points")
     else:
         mid_tie = 0
         if size_end[0] < 3: #Setting all the words from the players
@@ -249,5 +249,5 @@ else:
             play3_word = str_ans[size_end[2]]
             player_points[size_end[2]] += 1
             winner = 3
-        print(f"Unfortunately there was a tie between \"{play1_word}\" and \"{play2_word}\" scoring {int_ans[1+mid_tie]}, so player {winner} gets a point with \"{play3_word}\" scoring {int_ans[2-mid_tie]}")
+        print(f"There unfortunately was a tie between \"{play1_word}\" and \"{play2_word}\" scoring {int_ans[1+mid_tie]}, so player {winner} gets a point with \"{play3_word}\" scoring {int_ans[2-mid_tie]}")
 time.sleep(4)
