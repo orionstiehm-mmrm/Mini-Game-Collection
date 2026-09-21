@@ -75,8 +75,8 @@ def end_result(): #made the figuring out who is the middle a function to use aga
                 size_end[loop] = 3
         else:
             size_end[loop] = 3
-#Should output something like [0,2,1] where from left to right is the player
-# with the smaller number, so in this example player 3 won
+#Should output something like [0,2,1] where from left to right is the player number
+# with 0 = small, 1 = mid, 2 = big, and 3 = tie
 
 
 input("\nPress enter to continue:")
