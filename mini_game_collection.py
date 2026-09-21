@@ -5,5 +5,5 @@
     A small collection of hit games including:
         Middle Man
         Bomb Game
-        Poison Pill
+        Poisonous Chalices
 """
