@@ -5,25 +5,24 @@ Orion Stiehm
 A mini game for the final project 1 where the goal is to pick the middle option
 """
 
-# Used the video https://www.youtube.com/watch?v=KWgYha0clzw to learn for loops
-# I also learned about time.sleep and having to import time at https://stackoverflow.com/questions/510348/how-do-i-make-a-time-delay
-# Also def/functions were handy And i got it from https://www.w3schools.com/python/python_functions.asp
+# Used for loops this video:
+# https://www.youtube.com/watch?v=KWgYha0clzw
+# I also learned about time.sleep and having to import time at:
+# https://stackoverflow.com/questions/510348/how-do-i-make-a-time-delay
+# Also def/functions were handy And i got it from:
+# https://www.w3schools.com/python/python_functions.asp
 
 import time
 
 #All used vars
-anything: str
-player_round: int
 player_points: list[int] = [0,0,0]
 int_ans: list[int] = [0,0,0]
 str_ans: list[str] = ["0","0","0"]
 size_end: list[int] = [0,0,0]
 loop: int
 loop1: int
-scrable_lookup: list[str] = ["a","A","b","B","c","C","d","D","e","E","f","F","g","G","h","H",
-                             "i","I","j","J","k","K","l","L","m","M","n","N","o","O","p","P",
-                             "q","Q","r","R","s","S","t","T","u","U","v","V","w","W","x","X",
-                             "y","Y","z","Z"]
+scrable_lookup: list[str] = ["A","B","C","D","E","F","G","H","I","J","K","L","M",
+                             "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 scrable_points: list[int] = [1,3,3,2,1,4,2,4,1,8,5,1,3,1,1,3,10,1,1,1,1,4,4,8,4,10]
 scrable_convert: int
 tie_int: int = 0
@@ -32,7 +31,7 @@ play2_word: str
 play3_word: str
 winner: int = 0
 
-#The intro of MIDDLE MAN to explane the rules
+#The intro of MIDDLE MAN to explain the rules 
 print("""
 []      []  []  [][]    [][]    []      [][][][]      []      []    []    []    []
 [][]  [][]  []  []  []  []  []  []      []            [][]  [][]  []  []  [][]  []
@@ -82,11 +81,14 @@ def end_result(): #made the figuring out who is the middle a function to use aga
 input("\nPress enter to continue:")
 
 
-mid_round = 1 #Round 1 collecting the answers (Will always be int):
+for loop in range(1,4): #Round 1 collecting the answers (Will always be int):
 
-for loop in range(1,4):
-    int_ans[loop-1] = int(input(f"\nOnto Player {loop}s answer. "
-                                "Everyone else look away. Now enter a integer:"))
+    str_ans[loop-1] = input(f"\nOnto Player {loop}s answer. "
+                           "Everyone else look away. Now enter a integer:")
+    while str_ans[loop-1].isdigit() is False:
+        str_ans[loop-1] = input(f"\nPlayer {loop}, please answer with an"
+                        " actual integer:")
+    int_ans[loop-1] = int(str_ans[loop-1])
     print("\n" * 50)
 end_result()
 
@@ -112,10 +114,10 @@ if size_end[0] < 3 and size_end[1] < 3 and size_end[2] < 3: #To check for no tie
 
     player_points[size_end.index(1)] += 1
 elif size_end[0] == 3 and size_end[1] == 3 and size_end[2] == 3: #Check if only ties
-        print(f"You somehow you all picked the same number: {int_ans[1]}, so no one gets points")
+    print(f"You somehow you all picked the same number: {int_ans[1]}, so no one gets points")
 
 else: #Only one pair of ties
-    if size_end[0] < 3: #Setting all the words from the players
+    if size_end[0] < 3: #Setting all the numbers from the players
         tie_int = int_ans[1]
         player_points[0] += 1
         winner = 1
@@ -139,9 +141,8 @@ print("\n" * 50)
 size_end = [0,0,0]
 int_ans = [0,0,0]
 
-mid_round = 2 #Round 2 will now ask for strings and judge on length
 
-for loop in range(1,4):
+for loop in range(1,4): #Round 2 will now ask for strings and judge on length
     str_ans[loop-1] = input(f"\nOnto Player {loop}s answer. "
                             "Everyone else look away. Now enter a string:")
     int_ans[loop-1] = len(str_ans[loop-1])
@@ -168,8 +169,8 @@ if size_end[0] < 3 and size_end[1] < 3 and size_end[2] < 3: #To check how many t
 
     player_points[size_end[1]] += 1
 elif size_end[0] >= 3 and size_end[1] >= 3 and size_end[2] >= 3:
-        print(f"You somehow all picked the same value of \"{str_ans[0]}\", "
-              f"\"{str_ans[1]}\", and \"{str_ans[2]}\", so no one gets points")
+    print(f"You somehow all picked the same value of \"{str_ans[0]}\", "
+          f"\"{str_ans[1]}\", and \"{str_ans[2]}\", so no one gets points")
 
 else:
     if size_end[0] < 3: #Setting all the words from the players
@@ -202,19 +203,18 @@ print("\n" * 50)
 size_end = [0,0,0]
 int_ans = [0,0,0]
 
-mid_round = 3 #Round 3 will also ask fro a string, but will be judge on their score in scabble
 
-for loop in range(1,4):
+for loop in range(1,4): #Round 3 will ask for a string, but will be judge on their score in scabble
     str_ans[loop-1] = input(f"\nOnto Player {loop}s answer. "
                             "Everyone else look away. Now enter a string:")
 
     for loop1 in range(0,len(str_ans[loop-1])):
         try:
-            scrable_convert = scrable_lookup.index(str_ans[loop-1][loop1])
+            scrable_convert = scrable_lookup.index(str_ans[loop-1][loop1].title())
         except ValueError:
             scrable_convert = -1
         if scrable_convert != -1:
-            int_ans[loop-1] += scrable_points[int(scrable_convert/2)]  #convert letter to score
+            int_ans[loop-1] += scrable_points[int(scrable_convert)]  #convert letter to score
 
     print("\n" * 50)
 end_result()
@@ -239,9 +239,9 @@ if size_end[0] < 3 and size_end[1] < 3 and size_end[2] < 3: #To check how many t
 
     player_points[size_end[1]] += 1
 elif size_end[0] >= 3 and size_end[1] >= 3 and size_end[2] >= 3:
-        print(f"You somehow all picked the same scoring words of \"{str_ans[0]}\", "
-              f"\"{str_ans[1]}\", and \"{str_ans[2]}\" with the score {int_ans[1]}, "
-              "so no one gets points")
+    print(f"You somehow all picked the same scoring words of \"{str_ans[0]}\", "
+          f"\"{str_ans[1]}\", and \"{str_ans[2]}\" with the score {int_ans[1]}, "
+           "so no one gets points")
 
 else:
     if size_end[0] < 3: #Setting all the words from the players
