@@ -242,7 +242,7 @@ or type 0 if you want to exit\n""")
                 f"{int_ans[size_end.index(1)]} characters, from Player {size_end.index(1)+1}, "
                 "so they get the point")
 
-            player_points[size_end[1]] += 1
+            player_points[size_end.index(1)] += 1
         elif size_end[0] >= 3 and size_end[1] >= 3 and size_end[2] >= 3:
             print(f"You somehow all picked the same value of \"{str_ans[0]}\", "
                 f"\"{str_ans[1]}\", and \"{str_ans[2]}\", so no one gets points")
@@ -312,7 +312,7 @@ or type 0 if you want to exit\n""")
                 f"{int_ans[size_end.index(1)]} points, from Player {size_end.index(1)+1}, "
                 "so they get the point")
 
-            player_points[size_end[1]] += 1
+            player_points[size_end.index(1)] += 1
         elif size_end[0] >= 3 and size_end[1] >= 3 and size_end[2] >= 3:
             print(f"You somehow all picked the same scoring words of \"{str_ans[0]}\", "
                 f"\"{str_ans[1]}\", and \"{str_ans[2]}\" with the score {int_ans[1]}, "
@@ -361,11 +361,11 @@ or type 0 if you want to exit\n""")
         end_result()
 
         if size_end[0] == 2 or size_end[1] == 2 or size_end[2] == 2:
-            print(f"\nSo congratulations Player {size_end.index(2)+1}, you get a star")
+            print(f"\nSo congratulations Player {size_end.index(2)+1}, you get a star\n")
 
             ### players_stars[size_end.index(2)] += 1
         elif size_end[0] == size_end[1] == size_end[2]:
-            print("\nSo you all tied, no one gets a star. What the heck, what a waist of time")
+            print("\nSo you all tied, no one gets a star. What the heck, what a waist of time\n")
         else:
             if size_end[0] < 3: #Setting all the words from the players
                 play1_word = "2"
@@ -383,7 +383,7 @@ or type 0 if you want to exit\n""")
                 play3_word = "3"
                 ### players_stars[2] += 1
             print(f"\nThere was a tie between Player {play1_word} and Player {play2_word}, "
-                f"so they both lose and Player {play3_word} gets the star, hooray!")
+                f"so they both lose and Player {play3_word} gets the star, hooray!\n")
 
     if game == 3:
         # im going to use random so the questions in the list are given in a different order.
